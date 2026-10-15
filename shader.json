@@ -15,7 +15,7 @@
           "channel": 0
         }
       ],
-      "code": "float rand(vec2 co) {\n    return fract(sin(dot(co, vec2(12.9898, 78.233))) * 4113758.5453);\n}\n\nvoid mainImage( out vec4 fragColor, in vec2 fragCoord )\n{\n    vec2 uv = fragCoord / iResolution.xy;\n    uv.x /= 1000.0;\n    uv.y /= 1.0;\n\n    // Random value per pixel, re-rolled every frame\n    float r = rand(uv + iTime * 0.1);\n\n    vec3 col = vec3(1.0, 1.0, 1.0);\n    col *= vec3(vec3(r, r ,r));   // blend in some static\n\n    fragColor = vec4(col, 0.0);\n}",
+      "code": "float rand(vec2 co) {\n    return fract(sin(dot(co, vec2(12.9898, 78.233))) * 4113758.5453);\n}\n\nvoid mainImage( out vec4 fragColor, in vec2 fragCoord )\n{\n    vec2 uv = fragCoord / iResolution.xy;\n    uv.x /= 1000.0;\n    uv.y /= 1.0;\n\n    // Random value per pixel, re-rolled every frame\n    float r = rand(uv + iTime * 0.9);\n\n    vec3 col = vec3(1.0, 1.0, 1.0);\n    col *= vec3(vec3(r, r ,r));   // blend in some static\n\n    fragColor = vec4(col, 0.0);\n}",
       "name": "Image",
       "description": "",
       "type": "image"
