@@ -4,11 +4,14 @@
 
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
+    float rand(vec2 co){
+        return fract(sin(dot(co, vec2(12.9898, 78.233))) * 43758.5453);
+    }
     // Pixel position, from 0 to 1 across the screen.
     vec2 uv = fragCoord / 100.0 * iMouse.z;
 
     // A colour that shifts over time.
-    vec3 col = 0.5 + 0.5 * cos(iTime + uv.xyx + vec3(0.0, 2.0, uv.x));
+    vec3 col = 0.5 + 0.5 * cos(iTime + uv.xyx + vec3(0.0, random(uv.x), uv.x));
 
     // A soft circle in the middle that follows the mouse while you hold a button.
     vec2 centre = iMouse.z > 1.1 ? iMouse.xy : 0.5 * iResolution.xy;
