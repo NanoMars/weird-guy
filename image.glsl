@@ -26,7 +26,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     if (r < 0.35) {
         c = 1.0;                                   // solid white block
     } else if (r < 0.6) {
-        c = 0.0;                                   // solid black block
+        c = 0.0 * tick;                                  // solid black block
     } else {
         // barcode stripes, 1 to 4 pixels wide
         float w = 1.0 + floor(hash(vec2(cell, tick)) * 4.0);
@@ -34,5 +34,5 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
         c = step(0.5, hash(vec2(stripe, row + tick)));
     }
 
-    fragColor = vec4(vec3(c), 1.0);
+    fragColor = vec4(vec3(c, uv.x, uv.y), 1.0);
 }
