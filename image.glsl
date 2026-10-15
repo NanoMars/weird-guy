@@ -10,9 +10,10 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 
     // Random value per pixel, re-rolled every frame
     float r = rand(uv + iTime * 0.9);
+    
 
     vec3 col = vec3(1.0, 1.0, 1.0);
-    col *= vec3(vec3(r, r ,r));   // blend in some static
+    col *= smoothstep(vec3(r, r ,r));   // blend in some static
 
     fragColor = vec4(col, 0.0);
 }
